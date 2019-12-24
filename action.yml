@@ -4,11 +4,11 @@ description: Run Ansible Molecule
 author: Eugene Vasilenko <gmrnsk@gmail.com>
 
 branding:
-  icon: "upload"
-  color: "green"
+  icon: upload
+  color: green
 
 inputs:
-  options:
+  molecule_options:
     description: |
       Usage: molecule [OPTIONS] COMMAND [ARGS]...
 
@@ -24,7 +24,7 @@ inputs:
         --help                  Show this message and exit.
 
     required: false
-  command:
+  molecule_command:
     description: |
       Commands:
         check        Use the provisioner to perform a Dry-Run...
@@ -47,7 +47,7 @@ inputs:
 
     required: true
     default: 'test'
-  args:
+  molecule_args:
     description: |
       Usage: molecule [OPTIONS] COMMAND [ARGS]...
 
@@ -60,13 +60,5 @@ inputs:
     required: false
 runs:
   using: docker
-  image: Dockerfile
-  # image: docker://docker.pkg.github.com/gofrolist/molecule-action/molecule-action:latest
-  # args:
-  #   - ${{ inputs.options }}
-  #   - ${{ inputs.command }}
-  #   - ${{ inputs.args }}
-  # env:
-  #   OPTIONS: ${{ inputs.options }}
-  #   COMMAND: ${{ inputs.command }}
-  #   ARGS: ${{ inputs.args }}
+  image: docker://gofrolist/molecule:latest
+  # image: Dockerfile

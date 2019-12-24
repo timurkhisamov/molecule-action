@@ -1,6 +1,8 @@
-#!/bin/bash -x
+#!/bin/sh
 
-# : "${GITHUB_WORKSPACE?GITHUB_WORKSPACE has to be set. Did you use the actions/checkout action?}"
-# pushd ${GITHUB_WORKSPACE}
+set -x
 
-molecule ${INPUT_OPTIONS} ${INPUT_COMMAND} ${INPUT_ARGS}
+: "${GITHUB_REPOSITORY?GITHUB_REPOSITORY has to be set. Did you use the actions/checkout action?}"
+cd ${GITHUB_REPOSITORY}
+
+molecule ${INPUT_MOLECULE_OPTIONS} ${INPUT_MOLECULE_COMMAND} ${INPUT_MOLECULE_ARGS}
