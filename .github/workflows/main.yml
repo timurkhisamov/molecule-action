@@ -12,6 +12,7 @@ jobs:
         with:
           path: "${{ github.repository }}"
       - name: Ansible Molecule action step
-        uses: docker://gofrolist/molecule:latest
+        uses: gofrolist/molecule-action@dockerfile
         with:
           molecule_options: '--version'
+          pip_modules: netaddr,python-consul

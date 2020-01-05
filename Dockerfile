@@ -9,7 +9,7 @@ LABEL "com.github.actions.description"="Run Ansible Molecule"
 LABEL "com.github.actions.icon"="upload"
 LABEL "com.github.actions.color"="green"
 
-ENV BUILD_DEPS="\
+ARG BUILD_DEPS="\
     gcc \
     libc-dev \
     make \
@@ -18,7 +18,7 @@ ENV BUILD_DEPS="\
     openssl-dev \
     "
 
-ENV PACKAGES="\
+ARG PACKAGES="\
     docker \
     git \
     openssh-client \
@@ -28,14 +28,14 @@ ENV PIP_INSTALL_ARGS="\
     --no-cache-dir \
     "
 
-ENV PIP_MODULES="\
+ARG INPUT_PIP_MODULES="\
     netaddr \
     "
 
-ENV MOLECULE_EXTRAS="docker"
+ARG MOLECULE_EXTRAS="docker"
 
 RUN apk add --update --no-cache ${BUILD_DEPS} ${PACKAGES} && \
-    pip install ${PIP_INSTALL_ARGS} ${PIP_MODULES} "molecule[${MOLECULE_EXTRAS}]" && \
+    pip install ${PIP_INSTALL_ARGS} ${INPUT_PIP_MODULES} "molecule[${MOLECULE_EXTRAS}]" && \
     apk del --no-cache ${BUILD_DEPS} && \
     rm -rf /root/.cache
 

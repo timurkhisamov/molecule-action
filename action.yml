@@ -10,8 +10,6 @@ branding:
 inputs:
   molecule_options:
     description: |
-      Usage: molecule [OPTIONS] COMMAND [ARGS]...
-
       Options:
         --debug / --no-debug    Enable or disable debug mode. Default is disabled.
         -c, --base-config TEXT  Path to a base config.  If provided Molecule will
@@ -49,8 +47,6 @@ inputs:
     default: 'test'
   molecule_args:
     description: |
-      Usage: molecule [OPTIONS] COMMAND [ARGS]...
-
       Arguments:
         --scenario-name foo  Targeting a specific scenario.
         --driver-name foo    Targeting a specific driver.
@@ -58,7 +54,18 @@ inputs:
         --destroy=always     Always destroy instances at the conclusion of a Molecule run.
 
     required: false
+  pip_modules:
+    description: |
+      Install additional python modules
+
+    default: netaddr
+    required: false
 runs:
   using: docker
-  image: docker://gofrolist/molecule:latest
-  # image: Dockerfile
+  image: Dockerfile
+  # args:
+  #   - --build-arg PIP_MODULES=${{ inputs.pip_modules }}
+  # env:
+  #   OPTIONS: ${{ inputs.options }}
+  #   COMMAND: ${{ inputs.command }}
+  #   ARGS: ${{ inputs.args }}
