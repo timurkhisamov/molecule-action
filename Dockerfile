@@ -28,14 +28,16 @@ ARG PIP_INSTALL_ARGS="\
     --no-cache-dir \
     "
 
-# ARG PIP_MODULES="\
-#     netaddr \
-#     "
+ARG PIP_MODULES="\
+    netaddr \
+    boto3 \
+    botocore
+    "
 
 ARG MOLECULE_EXTRAS="docker"
 
 RUN apk add --update --no-cache ${BUILD_DEPS} ${PACKAGES} && \
-    pip install ${PIP_INSTALL_ARGS} ${PIP_MODULES} "molecule[${MOLECULE_EXTRAS}]" && \
+    pip install ${PIP_INSTALL_ARGS} ${PIP_MODULES} "molecule[${MOLECULE_EXTRAS}]==2.22" && \
     apk del --no-cache ${BUILD_DEPS} && \
     rm -rf /root/.cache
 
