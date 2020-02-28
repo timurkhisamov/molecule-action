@@ -56,7 +56,7 @@ inputs:
 
 runs:
   using: docker
-  image: docker://gofrolist/molecule:latest
+  image: docker://timurkhisamov/molecule:latest
   # env:
   #   options: ${{ inputs.molecule_options }}
   #   command: ${{ inputs.molecule_command }}

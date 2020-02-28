@@ -31,13 +31,18 @@ ARG PIP_INSTALL_ARGS="\
 ARG PIP_MODULES="\
     netaddr \
     boto3 \
-    botocore
+    botocore \
     "
 
-ARG MOLECULE_EXTRAS="docker"
+ARG MOLECULE_EXTRAS="\
+    docker \
+    ec2 \
+    "
+
+ARG MOLECULE_VERSION="3.02"
 
 RUN apk add --update --no-cache ${BUILD_DEPS} ${PACKAGES} && \
-    pip install ${PIP_INSTALL_ARGS} ${PIP_MODULES} "molecule[${MOLECULE_EXTRAS}]==2.22" && \
+    pip install ${PIP_INSTALL_ARGS} ${PIP_MODULES} "molecule[${MOLECULE_EXTRAS}]==${MOLECULE_VERSION}" && \
     apk del --no-cache ${BUILD_DEPS} && \
     rm -rf /root/.cache
 
