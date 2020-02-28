@@ -34,10 +34,7 @@ ARG PIP_MODULES="\
     botocore \
     "
 
-ARG MOLECULE_EXTRAS="\
-    docker \
-    ec2 \
-    "
+ARG MOLECULE_EXTRAS="docker ec2"
 
 ARG MOLECULE_VERSION="3.02"
 
