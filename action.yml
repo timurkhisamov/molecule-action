@@ -1,7 +1,7 @@
 ---
 name: Ansible Molecule
 description: Run Ansible Molecule
-author: Eugene Vasilenko <gmrnsk@gmail.com>
+author: Eugene Vasilenko <gmrnsk@gmail.com>, Timur Khisamov <timur.khisamov@gmail.com>
 
 branding:
   icon: upload
@@ -53,6 +53,15 @@ inputs:
         --all                Target all scenarios.
         --destroy=always     Always destroy instances at the conclusion of a Molecule run.
     required: false
+
+    AWS_SECRET_ACCESS_KEY:
+      description: 'The ENV for the AWS EC2'
+
+    AWS_ACCESS_KEY_ID:
+      description: 'The ENV for the AWS EC2'
+
+    EC2_REGION:
+      description: 'The ENV for the AWS EC2'
 
 runs:
   using: docker
