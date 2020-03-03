@@ -49,19 +49,12 @@ This GitHub action allows you to run [Molecule](https://molecule.readthedocs.io/
         --all                Target all scenarios.
         --destroy=always     Always destroy instances at the conclusion of a Molecule run.
     required: false
-
-AWS_SECRET_ACCESS_KEY:
-      description: 'The ENV for the AWS EC2'
-
-    AWS_ACCESS_KEY_ID:
-      description: 'The ENV for the AWS EC2'
-
-    EC2_REGION:
-      description: 'The ENV for the AWS EC2'
 ```
 
 ## Usage
 To use the action simply create an `main.yml` (or choose custom `*.yml` name) in the `.github/workflows/` directory.
+
+To import AWS env, use: [configure-aws-credentials](https://github.com/aws-actions/configure-aws-credentials)
 
 ### Basic example:
 

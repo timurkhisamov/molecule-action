@@ -33,7 +33,6 @@ ARG PIP_MODULES="\
     netaddr \
     boto3 \
     botocore \
-    pytest \
     "
 
 ARG MOLECULE_EXTRAS="docker"

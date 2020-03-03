@@ -54,18 +54,9 @@ inputs:
         --destroy=always     Always destroy instances at the conclusion of a Molecule run.
     required: false
 
-    AWS_SECRET_ACCESS_KEY:
-      description: 'The ENV for the AWS EC2'
-
-    AWS_ACCESS_KEY_ID:
-      description: 'The ENV for the AWS EC2'
-
-    EC2_REGION:
-      description: 'The ENV for the AWS EC2'
-
 runs:
   using: docker
-  image: docker://timurkhisamov/molecule:latest
+  image: docker://timurkhisamov/molecule:ec2-v1
   # env:
   #   options: ${{ inputs.molecule_options }}
   #   command: ${{ inputs.molecule_command }}
