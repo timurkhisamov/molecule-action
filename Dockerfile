@@ -23,6 +23,7 @@ ARG PACKAGES="\
     git \
     openssh-client \
     ansible-lint \
+    sudo \
     "
 
 ARG PIP_INSTALL_ARGS="\
@@ -33,6 +34,7 @@ ARG PIP_MODULES="\
     netaddr \
     boto3 \
     botocore \
+    molecule-ec2 \
     "
 
 ARG MOLECULE_EXTRAS="docker"
@@ -41,7 +43,6 @@ ARG MOLECULE_VERSION="3.0.2"
 
 RUN apk add --update --no-cache ${BUILD_DEPS} ${PACKAGES} && \
     pip install ${PIP_INSTALL_ARGS} ${PIP_MODULES} "molecule[${MOLECULE_EXTRAS}]==${MOLECULE_VERSION}" && \
-    pip install molecule-ec2 && \
     apk del --no-cache ${BUILD_DEPS} && \
     rm -rf /root/.cache
 
