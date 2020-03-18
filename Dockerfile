@@ -44,8 +44,13 @@ ARG MOLECULE_EXTRAS="docker"
 ARG MOLECULE_VERSION="3.0.2"
 
 RUN apk add --update --no-cache ${BUILD_DEPS} ${PACKAGES} && \
-    pip install ${PIP_INSTALL_ARGS} ${PIP_MODULES} "molecule[${MOLECULE_EXTRAS}]==${MOLECULE_VERSION}" && \
+    pip3 install ${PIP_INSTALL_ARGS} ${PIP_MODULES} "molecule[${MOLECULE_EXTRAS}]==${MOLECULE_VERSION}" && \
     apk del --no-cache ${BUILD_DEPS} && \
     rm -rf /root/.cache
+
+# CRUNCH because env ANSIBLE_LIBRARY not work now
+
+RUN mkdir -p /root/.ansible/plugins && \
+    ln -s /usr/local/lib/python3.7/site-packages/ansible/modules /root/.ansible/plugins/
 
 CMD cd ${GITHUB_REPOSITORY}; molecule ${INPUT_MOLECULE_OPTIONS} ${INPUT_MOLECULE_COMMAND} ${INPUT_MOLECULE_ARGS}
