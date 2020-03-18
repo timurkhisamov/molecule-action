@@ -35,6 +35,8 @@ ARG PIP_MODULES="\
     boto3 \
     botocore \
     molecule-ec2 \
+    ansible==2.9.6 \
+    ansible-modules-hashivault \
     "
 
 ARG MOLECULE_EXTRAS="docker"
