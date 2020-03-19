@@ -56,7 +56,7 @@ inputs:
 
 runs:
   using: docker
-  image: docker://timurkhisamov/molecule:ec2-v2
+  image: docker://timurkhisamov/molecule:ec2-v3
   # env:
   #   options: ${{ inputs.molecule_options }}
   #   command: ${{ inputs.molecule_command }}
